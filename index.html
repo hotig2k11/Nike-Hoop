@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIKE HOOPS | Play Your Game</title>
+<style>
+:root {
+  --bg:#101010; --card:#1b1b1b; --lime:#d7ff3f;
+  --white:#f6f6f6; --muted:#aaa; --line:#363636;
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0; background:var(--bg); color:var(--white);
+  font-family:Arial,Helvetica,sans-serif; line-height:1.6;
+}
+a {color:inherit;text-decoration:none}
+header {
+  position:sticky;top:0;z-index:5;background:#101010ee;
+  border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
+}
+nav {
+  max-width:1150px;margin:auto;padding:16px 22px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.logo {font-size:22px;font-weight:1000;letter-spacing:2px}
+.logo span,h1 span,.accent {color:var(--lime)}
+.links {display:flex;gap:22px;flex-wrap:wrap}
+.links a:hover {color:var(--lime)}
+.btn {
+  display:inline-block;background:var(--lime);color:#111;
+  padding:11px 17px;border-radius:5px;font-weight:bold;border:0;cursor:pointer;
+}
+.btn:hover {filter:brightness(.9)}
+.hero {
+  max-width:1150px;margin:auto;padding:75px 22px;
+  display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;
+}
+.kicker {color:var(--lime);font-size:12px;font-weight:bold;letter-spacing:3px}
+h1 {font-size:clamp(55px,8vw,100px);line-height:.92;letter-spacing:-5px;margin:20px 0}
+.hero p {color:#c5c5c5;max-width:480px}
+.hero-art {
+  min-height:330px;border:1px solid #393939;border-radius:15px;
+  background:radial-gradient(circle,#494949,#171717 65%);
+  display:grid;place-items:center;position:relative;overflow:hidden;
+}
+.ball {font-size:clamp(110px,20vw,200px);filter:grayscale(1)}
+.stamp {position:absolute;bottom:18px;right:18px;background:var(--lime);
+  color:#111;padding:8px 12px;font-weight:900;font-size:12px;transform:rotate(-4deg)}
+.ticker {text-align:center;padding:14px;border-block:1px solid var(--line);
+  color:var(--lime);font-size:12px;letter-spacing:3px;font-weight:bold}
+section {max-width:1150px;margin:auto;padding:55px 22px}
+.heading {display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+h2 {font-size:clamp(30px,4vw,45px);line-height:1.1;margin:8px 0}
+.heading p {max-width:430px;color:var(--muted);font-size:14px}
+.filters {display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}
+.filter {padding:9px 15px;border:1px solid #444;border-radius:30px;
+  background:#1b1b1b;color:white;cursor:pointer}
+.filter.active,.filter:hover {background:var(--lime);color:#111;border-color:var(--lime)}
+.products {display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.product {background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.product[hidden] {display:none}
+.picture {height:190px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#303030,#181818);position:relative}
+.shoe {font-size:82px;filter:grayscale(1);transform:rotate(-20deg)}
+.tag {position:absolute;top:12px;left:12px;background:var(--lime);
+  color:#111;padding:4px 8px;font-size:10px;font-weight:bold}
+.info {padding:18px}
+.series {font-size:11px;color:var(--lime);letter-spacing:2px;font-weight:bold}
+h3 {margin:5px 0;font-size:23px}
+.info p {font-size:14px;color:#bbb;min-height:66px}
+.meta {border-top:1px solid #393939;padding-top:12px;font-size:12px;color:#ddd}
+.meta b {color:var(--lime)}
+.tips {display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.tip {padding:22px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.number {font-size:35px;color:var(--lime);font-weight:900}
+.tip p,.checklist li {color:#bbb;font-size:14px}
+.guide {display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.callout {background:var(--lime);color:#111;border-radius:12px;padding:27px}
+.callout h2 {font-size:35px}
+.callout p {color:#333}
+.checklist {padding:24px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.checklist li {padding:6px 0}
+.note {font-size:12px;color:#888;margin-top:25px}
+footer {border-top:1px solid var(--line);padding:25px 22px;color:#999}
+.foot {max-width:1150px;margin:auto;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:800px) {
+  .hero {grid-template-columns:1fr;padding-top:45px}
+  .products {grid-template-columns:repeat(2,1fr)}
+  .tips {grid-template-columns:1fr}
+  .heading {display:block}
+  .guide {grid-template-columns:1fr}
+}
+@media(max-width:540px) {
+  nav {flex-wrap:wrap;padding:13px 16px}
+  .links {order:3;width:100%;justify-content:space-between;gap:8px}
+  .links a {font-size:12px}
+  nav>.btn {font-size:12px;padding:8px}
+  .hero {padding:45px 17px}
+  section {padding:40px 17px}
+  h1 {letter-spacing:-3px}
+  .products {grid-template-columns:1fr}
+  .picture {height:210px}
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+  <a class="logo" href="#home">NIKE <span>HOOPS.</span></a>
+  <div class="links">
+    <a href="#models">Giày bóng rổ</a>
+    <a href="#playstyle">Lối chơi</a>
+    <a href="#tips">Chọn giày</a>
+  </div>
+  <a class="btn" href="https://www.nike.com/vn/" target="_blank" rel="noopener">NIKE STORE ↗</a>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="kicker">BASKETBALL SHOE GUIDE</div>
+    <h1>PLAY<br>YOUR <span>GAME.</span></h1>
+    <p>Khám phá những dòng giày bóng rổ Nike dành cho tốc độ,
+    sức bật, độ bám và khả năng kiểm soát. Tìm đôi giày phù hợp
+    với cách bạn chơi.</p>
+    <a class="btn" href="#models">KHÁM PHÁ GIÀY ↓</a>
+  </div>
+  <div class="hero-art">
+    <div class="ball">🏀</div>
+    <div class="stamp">BUILT FOR THE COURT</div>
+  </div>
+</section>
+
+<div class="ticker">SPEED • CONTROL • CUSHION • TRACTION • OWN THE COURT</div>
+
+<section id="models">
+  <div class="heading">
+    <div><div class="kicker">NIKE BASKETBALL</div><h2>Find Your Pair.</h2></div>
+    <p>Lọc các dòng giày theo nhu cầu chơi bóng.
+    Đặc điểm thực tế phụ thuộc phiên bản, bàn chân và mặt sân.</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">Tất cả</button>
+    <button class="filter" data-filter="speed">Tốc độ</button>
+    <button class="filter" data-filter="allround">Đa năng</button>
+    <button class="filter" data-filter="cushion">Đệm êm</button>
+    <button class="filter" data-filter="value">Dễ tiếp cận</button>
+  </div>
+
+  <div class="products">
+    <article class="product" data-type="speed">
+      <div class="picture"><span class="tag">QUICK GUARD</span><span class="shoe">👟</span></div>
+      <div class="info"><div class="series">SABRINA SERIES</div>
+        <h3>Sabrina</h3><p>Dòng giày hướng đến sự linh hoạt, đổi hướng và kiểm soát khi xử lý bóng.</p>
+        <div class="meta">Phong cách: <b>Speed + Control</b></div></div>
+    </article>
+
+    <article class="product" data-type="speed">
+      <div class="picture"><span class="tag">EXPLOSIVE</span><span class="shoe">👟</span></div>
+      <div class="info"><div class="series">JA MORANT SERIES</div>
+        <h3>Ja</h3><p>Tham khảo cho người chơi thích tăng tốc, cắt vào rổ và di chuyển bùng nổ.</p>
+        <div class="meta">Phong cách: <b>Speed + Grip</b></div></div>
+    </article>
+
+    <article class="product" data-type="cushion">
+      <div class="picture"><span class="tag">POWER GAME</span><span class="shoe">👟</span></div>
+      <div class="info"><div class="series">LEBRON JAMES SERIES</div>
+        <h3>LeBron</h3><p>Dòng thiên về hỗ trợ cho lối chơi mạnh mẽ, bật nhảy và tấn công rổ.</p>
+        <div class="meta">Phong cách: <b>Support + Cushion</b></div></div>
+    </article>
+
+    <article class="product" data-type="allround">
+      <div class="picture"><span class="tag">ALL-AROUND</span><span class="shoe">👟</span></div>
+      <div class="info"><div class="series">KEVIN DURANT SERIES</div>
+        <h3>KD</h3><p>Lựa chọn để tìm sự cân bằng giữa đệm, ổn định và khả năng ghi điểm đa dạng.</p>
+        <div class="meta">Phong cách: <b>Balanced</b></div></div>
+    </article>
+
+    <article class="product" data-type="allround">
+      <div class="picture"><span class="tag">SCORER</span><span class="shoe">👟</span></div>
+      <div class="info"><div class="series">BOOKER SERIES</div>
+        <h3>Book</h3><p>Dành cho người chơi thích ném rổ, di chuyển không bóng và tạo khoảng trống.</p>
+        <div class="meta">Phong cách: <b>Control + Feel</b></div></div>
+    </article>
+
+    <article class="product" data-type="value">
+      <div class="picture"><span class="tag">VALUE PICK</span><span class="shoe">👟</span></div>
+      <div class="info"><div class="series">GIANNIS SERIES</div>
+        <h3>Giannis</h3><p>Có thể xem các mẫu Giannis Immortality khi tìm giày tập luyện với ngân sách vừa phải.</p>
+        <div class="meta">Phong cách: <b>Everyday Hoops</b></div></div>
+    </article>
+  </div>
+  <p class="note">Đây là trang giới thiệu độc lập, không thuộc hoặc được Nike tài trợ.
+  Giá bán, phiên bản và tồn kho thay đổi theo thời điểm.</p>
+</section>
+
+<section id="playstyle">
+  <div class="kicker">FIND YOUR PLAYSTYLE</div>
+  <h2>Chọn theo lối chơi.</h2>
+  <div class="tips">
+    <div class="tip"><div class="number">01</div><h3>Tốc độ & đổi hướng</h3><p>Ưu tiên khóa chân tốt, độ bám phù hợp và cảm giác di chuyển nhanh.</p></div>
+    <div class="tip"><div class="number">02</div><h3>Đệm & hỗ trợ</h3><p>Thử trực tiếp độ êm, độ ổn định khi tiếp đất và cảm giác khi bật nhảy.</p></div>
+    <div class="tip"><div class="number">03</div><h3>Đa năng</h3><p>Cân bằng độ bám, độ ổn định và sự thoải mái thay vì chỉ chọn theo ngoại hình.</p></div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="guide">
+    <div class="callout">
+      <div class="kicker" style="color:#333">BEFORE YOU BUY</div>
+      <h2>Đừng chọn chỉ vì đẹp.</h2>
+      <p>Đôi giày phù hợp cần vừa chân, không gây đau và thích hợp với mặt sân bạn chơi.</p>
+      <a class="btn" style="background:#111;color:#d7ff3f"
+        href="https://www.nike.com/vn/w/basketball-shoes-3glsmzy7ok"
+        target="_blank" rel="noopener">XEM GIÀY NIKE ↗</a>
+    </div>
+    <div class="checklist">
+      <h3>Checklist thử giày</h3>
+      <ul>
+        <li>Thử cả hai chân với vớ chơi bóng.</li>
+        <li>Gót chân chắc, không trượt khi di chuyển.</li>
+        <li>Mũi chân không bị ép hoặc đau.</li>
+        <li>Thử đổi hướng và nhún nhẹ để kiểm tra độ ổn định.</li>
+        <li>Chọn đế phù hợp sân trong nhà hoặc ngoài trời.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot">
+    <strong>NIKE HOOPS.</strong>
+    <span>Find your game. Own the court. 🏀</span>
+    <a href="#home">Lên đầu trang ↑</a>
+  </div>
+</footer>
+
+<script>
+const buttons = document.querySelectorAll(".filter");
+const products = document.querySelectorAll(".product");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    const filter = button.dataset.filter;
+
+    products.forEach(product => {
+      product.hidden = filter !== "all" && product.dataset.type !== filter;
+    });
+  });
+});
+</script>
+</body>
+</html>
